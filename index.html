@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./myPromise.js"></script>
+    <script>
+      // const promise = new myPromise((resolve, reject) => {
+      //   setTimeout(function () {
+      //     resolve(1);
+      //     //reject(1)
+      //   }, 1000);
+      // });
+      const res = myPromise.all([1, 2, 3, 4]);
+
+      res.then(
+        (value) => {
+          console.log("onResolved:", value);
+        },
+        (reason) => {
+          console.log("onRejected:", reason);
+        }
+      );
+    </script>
+  </body>
+</html>
