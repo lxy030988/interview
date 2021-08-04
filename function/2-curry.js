@@ -39,3 +39,13 @@ function curry3(fn) {
     }
   }
 }
+
+function curry2(fn) {
+  return function curried(...args) {
+    if (fn.length === args.length) {
+      return fn.call(this, ...args)
+    } else {
+      return (...r) => curried.call(this, ...args, ...r)
+    }
+  }
+}
