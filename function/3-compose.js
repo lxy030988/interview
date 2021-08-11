@@ -33,11 +33,17 @@ let r1 = flowed('a')
 console.log(r1)
 
 
-export function compose(...fns) {
-  if (fns.length === 0) return (...arg) => arg
-  if (fns.length === 1) return fns[0]
-  return fns.reduce((a, b) => (...args) => a(b(...args)))
-}
+// function compose(...fns) {
+//   if (fns.length === 0) return (...arg) => arg
+//   if (fns.length === 1) return fns[0]
+//   return fns.reduce((a, b) => (...args) => a(b(...args)))
+// }
 
 let c1 = compose(add3, add2, add1)
 console.log(c1('c', 2))
+
+function compose(...fns) {
+  if (fns.length === 0) return (...args) => args
+  if (fns.length === 1) return fns[0]
+  return fns.reduce((a, b) => (...args) => a(b(...args)))
+}
