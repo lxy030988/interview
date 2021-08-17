@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "lxy-cli": "./bin/cli.js"
+  },
   "scripts": {
     "test": "jest",
     "watch": "jest --watchAll",
@@ -11,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "commander": "^8.1.0",
     "lodash": "^4.17.21"
   }
 }
