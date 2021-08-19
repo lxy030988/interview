@@ -6,17 +6,21 @@ class Promise1 {
     this.status = PENDING
     this.value = null
     this.fail = null
+    this.resolvedCbs = []
+    this.rejectedCbs = []
 
     const resolve = (v) => {
       if (this.status = PENDING) {
         this.value = v
         this.status = FULFILLED
+        this.resolvedCbs.forEach(fn => fn())
       }
     }
     const reject = (v) => {
       if (this.status = PENDING) {
         this.fail = v
         this.status = REJECTED
+        this.rejectedCbs.forEach(fn => fn())
       }
     }
 
@@ -33,6 +37,13 @@ class Promise1 {
         resolved(this.value)
       } else if (this.status == REJECTED) {
         rejected(this.fail)
+      } else if (this.status == PENDING) {
+        this.resolvedCbs.push(() => {
+          resolved(this.value)
+        })
+        this.rejectedCbs.push(() => {
+          rejected(this.fail)
+        })
       }
     } catch (error) {
       rejected(error)
