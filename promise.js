@@ -41,7 +41,9 @@ class Promise1 {
 }
 
 const p = new Promise1((resolve, reject) => {
-  resolve('111')
+  setTimeout(() => {
+    resolve('成功')
+  }, 1000)
 })
 p.then((v) => {
   console.log('then', v)
