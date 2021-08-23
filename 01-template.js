@@ -39,10 +39,18 @@ render(template, data); // 我是姓名，年龄18，性别undefined
 function render(template, data) {
   //   /\{\{(\w+)\}\}/ === /\{\{(.+?)\}\}/
   const reg = /\{\{(\w+)\}\}/g
-  template = template.replace(reg, function () {
-    console.log(arguments)
+  template = template.replace(reg, function (x) {
+    console.log(arguments, x)
     return data[arguments[1]]
   })
   console.log(template)
   // console.log(reg.exec(template))
 }
+
+let s1 = "get-element-by-id"
+
+s1 = s1.replace(/-\w/g, function (x) {
+  console.log(x)
+  return x[1].toUpperCase()
+})
+console.log(s1)
